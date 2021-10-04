@@ -1,5 +1,5 @@
 {
-  "name": "amaury-node-template",
+  "name": "@panfilo/express-template",
   "version": "1.0.0",
   "description": "Template for backend with express typescript",
   "main": "build/index.js",
