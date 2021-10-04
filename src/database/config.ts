@@ -1,8 +1,8 @@
-import mongoose from "mongoose";
+import { connect } from "mongoose";
 
 export default async () => {
   try {
-    await mongoose.connect(process.env.DB_CNN as string, {
+    await connect(process.env.DB_CNN || "", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,

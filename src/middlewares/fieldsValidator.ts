@@ -1,7 +1,7 @@
-import { NextFunction, Request, Response } from "express";
 import { validationResult } from "express-validator";
+import type { middleware } from "./middlewares";
 
-const validateFields = (req: Request, res: Response, next: NextFunction) => {
+const validateFields: middleware = (req, res, next) => {
   const err = validationResult(req);
 
   if (!err.isEmpty())
