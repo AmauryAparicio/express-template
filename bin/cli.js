@@ -1,0 +1,36 @@
+#! /usr/bin/env node
+
+const { execSync } = require("child_process");
+
+const runCommand = command => {
+  try {
+    execSync(`${command}`, { stdio: "inherit" });
+  } catch (error) {
+    console.error(`Failed to execute ${command}`, error);
+    return false;
+  }
+  return true;
+};
+
+const repoName = process.argv[2];
+
+const repoInitCommand = `mkdir ${repoName} && cd ${repoName}`;
+
+const gitInitCommand = `git init --template=https://github.com/AmauryAparicio/express-template`;
+
+const installDepsCommand = `cd ${repoName} && npm install`;
+
+console.log(`Cloning the repository with name ${repoName}`);
+
+const createdRepo = runCommand(repoInitCommand);
+if (!createdRepo) process.exit(-1);
+const checkedOut = runCommand(gitInitCommand);
+if (!checkedOut) process.exit(-1);
+console.log(`Installing dependencies for ${repoName}`);
+const installedDeps = runCommand(installDepsCommand);
+if (!installedDeps) process.exit(-1);
+
+console.log(
+  `Congratulations! You are ready. Follow following commands to start.`
+);
+console.log(`cd ${repoName} && npm run dev`);
