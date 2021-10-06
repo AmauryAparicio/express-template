@@ -48,27 +48,34 @@ try {
 
 async function main() {
   try {
-    console.log("Downloading files...");
+    console.log("\n Downloading files...");
     execSync(`git clone --depth 1 ${git_repo} ${projectPath}`);
 
     process.chdir(projectPath);
 
-    console.log("Installing dependencies...");
+    console.log("\n Installing dependencies...");
 
     execSync("npm install");
 
-    console.log("Removing useless files");
+    console.log("\n Removing useless files");
 
     execSync("npx rimraf ./.git");
-    fs.rmdirSync(path.join(projectPath, "bin"), { recursive: true });
 
-    console.log("The installation is done, this is ready to use !");
+    execSync("git init");
+    execSync("git add --all");
+    execSync("git commit -m 'First Commit'");
+
+    execSync("npx rimraf ./.npmignore");
+
+    fs.rmSync(path.join(projectPath, "bin"), { recursive: true });
+
+    console.log("\n The installation is done, this is ready to use !");
 
     console.log(
-      `Congratulations! You are ready. Follow following commands to start.`
+      `\n Congratulations! You are ready. Follow following commands to start.`
     );
 
-    console.log(`cd ${projectName} && npm run dev`);
+    console.log(`\n cd ${projectName} && npm run dev`);
   } catch (error) {
     console.log(error);
   }
