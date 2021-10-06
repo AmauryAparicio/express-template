@@ -1,6 +1,14 @@
 import { validateToken } from "../helpers/tokens";
 import type { middleware } from "./middlewares";
 
+/**
+ * Validates the existence of token in headers and validates it with validateToken helper.
+ * @param req Request object
+ * @param res Response object
+ * @param next NextFunction
+ * @returns the payload in the token property os the request body or Error
+ */
+
 const tokenValidator: middleware = async (req, res, next) => {
   const token = req.header("x-token");
 
@@ -17,7 +25,7 @@ const tokenValidator: middleware = async (req, res, next) => {
     } catch {
       return res.status(400).json({
         status: "error",
-        err: "Token no válido",
+        err: "Token not valid",
       });
     }
 

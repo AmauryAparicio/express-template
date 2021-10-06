@@ -1,8 +1,13 @@
-import type { Request, Response } from "express";
+import type { Request, RequestHandler, Response } from "express";
 
-export interface Handler<Res = any, Req = Request> {
-  (req: Req, res: Response<Res>):
-    | Response<any, Record<string, any>>
-    | undefined
-    | Promise<Response<any, Record<string, any>>>;
+export interface CustomRes<T = Record<string, any> | string> {
+  status: "error" | "success";
+  err?: Array<string> | string;
+  data?: T;
 }
+
+export type Handler<
+  Params = Record<string, string>,
+  Body = Record<string, any>,
+  Res = Record<string, any>
+> = RequestHandler<Params, CustomRes<Res>, Body>;

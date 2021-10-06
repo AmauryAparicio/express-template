@@ -1,5 +1,16 @@
 # Amaury Express Template
 
+[![NPM version][npm-image]][npm-url]
+[![Downloads][downloads-image]][npm-url]
+
+## Quick Overview
+
+```sh
+npx @panfilo/express-template my-app
+cd my-app
+npm start
+```
+
 ---
 
 ## Main folders
@@ -24,12 +35,9 @@
 
 ## Scripts
 
-+ "ts:node": runs a node server for typescript files
-+ "start:ts": runs nodemon with typescript configuration
-+ "dev": compile typescript into build files and the run a node server
++ "dev": run a typescript node server with hot reload
 + "build": compile typescript into build files
 + "start": runs a node server for the build files
-+ "clean": delete build files
 
 ---
 
@@ -45,3 +53,7 @@ Here are the external libraries that the template use:
 + [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
 + [Moment.js](https://momentjs.com/)
 + [Mongoose](https://mongoosejs.com/)
+
+[npm-url]: https://www.npmjs.com/package/@panfilo/express-template
+[npm-image]: http://img.shields.io/npm/v/@panfilo/express-template.svg
+[downloads-image]: http://img.shields.io/npm/dm/@panfilo/express-template.svg

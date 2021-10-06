@@ -7,6 +7,10 @@ interface UserModel extends SchemaTimestampsConfig {
   password: string;
 }
 
+/**
+ * Simple model for a User. you can use this as a base for other models.
+ */
+
 const UserSchema = new Schema<UserModel>(
   {
     name: {
