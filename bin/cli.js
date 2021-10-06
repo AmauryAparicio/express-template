@@ -47,7 +47,7 @@ if (!checkedOut) process.exit(-1);
 
 const newRepoCommand = isWindows
   ? `cd ${repoName} && RMDIR /Q/S .git`
-  : `cd ${repoName} && rm -r -y .git`;
+  : `cd ${repoName} && rm -r -f .git`;
 
 console.log(`Creating new repository for ${repoName}`);
 
