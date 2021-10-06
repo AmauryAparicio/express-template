@@ -1,6 +1,6 @@
 {
   "name": "@panfilo/express-template",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Template for backend with express typescript",
   "main": "build/index.js",
   "repository": {
