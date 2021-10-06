@@ -8,7 +8,7 @@
 ```sh
 npx @panfilo/express-template my-app
 cd my-app
-npm start
+npm run dev
 ```
 
 ---
@@ -21,9 +21,9 @@ npm start
 
 ---
 
-## Empty folders
+## folders
 
-+ You have a set of empty folders to begin with, these are:
++ You have a set of folders to begin with, these are:
   + controllers: Save here the controllers for your app
   + database: Here lays the database configuration
   + helpers: Save halper files

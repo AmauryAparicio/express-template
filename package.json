@@ -1,6 +1,6 @@
 {
   "name": "@panfilo/express-template",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Template for backend with express typescript",
   "main": "build/index.js",
   "repository": {
@@ -14,10 +14,7 @@
   ],
   "bin": "./bin/cli.js",
   "scripts": {
-    "ts:node": "ts-node src/index.ts",
-    "clean": "RMDIR /Q/S build",
     "start": "node build/index.js",
-    "start:ts": "nodemon",
     "dev": "cross-env NODE_ENV=development && tsc && node build/index.js",
     "build": "cross-env NODE_ENV=production && tsc"
   },
