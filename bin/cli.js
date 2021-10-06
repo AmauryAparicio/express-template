@@ -14,17 +14,13 @@ const runCommand = command => {
 
 const repoName = process.argv[2];
 
-const repoInitCommand = `mkdir ${repoName} && cd ${repoName}`;
-
-const gitInitCommand = `git init --template=https://github.com/AmauryAparicio/express-template`;
+const gitCheckoutCommand = `git clone --bare --depth 1 https://github.com/AmauryAparicio/express-template ${repoName}`;
 
 const installDepsCommand = `cd ${repoName} && npm install`;
 
 console.log(`Cloning the repository with name ${repoName}`);
 
-const createdRepo = runCommand(repoInitCommand);
-if (!createdRepo) process.exit(-1);
-const checkedOut = runCommand(gitInitCommand);
+const checkedOut = runCommand(gitCheckoutCommand);
 if (!checkedOut) process.exit(-1);
 console.log(`Installing dependencies for ${repoName}`);
 const installedDeps = runCommand(installDepsCommand);
