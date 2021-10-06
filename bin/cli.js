@@ -60,14 +60,12 @@ async function main() {
     console.log("\n Removing useless files");
 
     execSync("npx rimraf ./.git");
+    execSync("npx rimraf ./.npmignore");
+    fs.rmSync(path.join(projectPath, "bin"), { recursive: true });
 
     execSync("git init");
     execSync("git add --all");
     execSync("git commit -m 'First Commit'");
-
-    execSync("npx rimraf ./.npmignore");
-
-    fs.rmSync(path.join(projectPath, "bin"), { recursive: true });
 
     console.log("\n The installation is done, this is ready to use !");
 
