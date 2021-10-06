@@ -14,7 +14,7 @@ const runCommand = command => {
 
 const repoName = process.argv[2];
 
-const gitCheckoutCommand = `git clone --bare --depth 1 https://github.com/AmauryAparicio/express-template ${repoName}`;
+const gitCheckoutCommand = `git clone -n --depth 1 https://github.com/AmauryAparicio/express-template ${repoName}`;
 
 const installDepsCommand = `cd ${repoName} && npm install`;
 
