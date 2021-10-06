@@ -4,6 +4,20 @@
  * Create a funtion to manage commands
  */
 const { execSync } = require("child_process");
+const path = require("path");
+const fs = require("fs");
+
+if (process.argv.length < 3) {
+  console.log("You have to provide a name to your app.");
+  console.log("For example :");
+  console.log("    npx create-my-boilerplate my-app");
+  process.exit(1);
+}
+
+const projectName = process.argv[2];
+const currentPath = process.cwd();
+const projectPath = path.join(currentPath, projectName);
+const git_repo = "https://github.com/AmauryAparicio/express-template";
 
 const runCommand = command => {
   try {
@@ -15,63 +29,48 @@ const runCommand = command => {
   return true;
 };
 
-/**
- * Get the new repository name
- */
-
-const repoName = process.argv[2];
-
-/**
- * Get the platform
- */
-
-const os = require("os").platform();
-
-const isWindows = /^win/.test(os);
+try {
+  fs.mkdirSync(projectPath);
+} catch (err) {
+  if (err.code === "EEXIST") {
+    console.log(
+      `The file ${projectName} already exist in the current directory, please give it another name.`
+    );
+  } else {
+    console.log(error);
+  }
+  process.exit(1);
+}
 
 /**
  * Clone the repository
  */
 
-const gitCheckoutCommand = `git clone --depth 1 https://github.com/AmauryAparicio/express-template ${repoName}`;
+async function main() {
+  try {
+    console.log("Downloading files...");
+    execSync(`git clone --depth 1 ${git_repo} ${projectPath}`);
 
-console.log(`Cloning the repository with name ${repoName}`);
+    process.chdir(projectPath);
 
-const checkedOut = runCommand(gitCheckoutCommand);
+    console.log("Installing dependencies...");
 
-if (!checkedOut) process.exit(-1);
+    execSync("npm install");
 
-/**
- * Initialize the new repository
- */
+    console.log("Removing useless files");
 
-const newRepoCommand = isWindows
-  ? `cd ${repoName} && RMDIR /Q/S .git`
-  : `cd ${repoName} && rm -r -f .git`;
+    execSync("npx rimraf ./.git");
+    fs.rmdirSync(path.join(projectPath, "bin"), { recursive: true });
 
-console.log(`Creating new repository for ${repoName}`);
+    console.log("The installation is done, this is ready to use !");
 
-const createdRepo = runCommand(newRepoCommand);
+    console.log(
+      `Congratulations! You are ready. Follow following commands to start.`
+    );
 
-if (!createdRepo) process.exit(-1);
-
-/**
- * Install dependencies
- */
-
-const installDepsCommand = `cd ${repoName} && npm install`;
-
-console.log(`Installing dependencies for ${repoName}`);
-
-const installedDeps = runCommand(installDepsCommand);
-
-if (!installedDeps) process.exit(-1);
-
-/**
- * Exit
- */
-
-console.log(
-  `Congratulations! You are ready. Follow following commands to start.`
-);
-console.log(`cd ${repoName} && npm run dev`);
+    console.log(`cd ${projectName} && npm run dev`);
+  } catch (error) {
+    console.log(error);
+  }
+}
+main();
