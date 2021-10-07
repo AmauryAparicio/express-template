@@ -17,10 +17,13 @@
     "start": "node build/index.js",
     "dev": "cross-env NODE_ENV=development && tsc && node build/index.js",
     "build": "cross-env NODE_ENV=production && tsc",
-    "prepublish": "npm version minor",
+    "prepublish": "npm version patch",
     "publish": "clean-publish"
   },
-  "author": "Amaury Aparicio",
+  "author": {
+    "name": "Amaury Aparicio",
+    "email": "amaurysunstar@gmail.com"
+  },
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
