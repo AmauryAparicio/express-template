@@ -17,7 +17,8 @@
     "start": "node build/index.js",
     "dev": "cross-env NODE_ENV=development && tsc && node build/index.js",
     "build": "cross-env NODE_ENV=production && tsc",
-    "publish": "npm version minor && clean-publish"
+    "prepublish": "npm version minor",
+    "publish": "clean-publish"
   },
   "author": "Amaury Aparicio",
   "license": "ISC",
