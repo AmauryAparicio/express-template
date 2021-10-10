@@ -18,17 +18,19 @@ npm run dev
 + You will start with 2 folders:
   + src: Main Typescript files
   + public: All static files here
-  + __test__: Make your tests here
+  + tests: Make your tests here
 
 ---
 
 ## .env file
 
 + Configure your MongoDB with these variables:
-  + PRODUCTION_DB=""
-  + DEV_DB=""
-  + TEST_DB=""
+  + PRODUCTION_DB: Your MongoDB database url for production
+  + DEV_DB: Your MongoDB database url for development
+  + TEST_DB: Your MongoDB database url for testing
   + SECRET_JWT_SEED=""
+
+__If you dont configure an url for production and you deploy your project to production, you will have an error; same for other database urls here.__
 
 ---
 
