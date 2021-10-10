@@ -18,6 +18,17 @@ npm run dev
 + You will start with 2 folders:
   + src: Main Typescript files
   + public: All static files here
+  + __test__: Make your tests here
+
+---
+
+## .env file
+
++ Configure your MongoDB with these variables:
+  + PRODUCTION_DB=""
+  + DEV_DB=""
+  + TEST_DB=""
+  + SECRET_JWT_SEED=""
 
 ---
 
@@ -38,6 +49,7 @@ npm run dev
 + "dev": run a typescript node server with hot reload
 + "build": compile typescript into build files
 + "start": runs a node server for the build files
++ "test": runs Jest for testing
 
 ---
 
@@ -53,6 +65,8 @@ Here are the external libraries that the template use:
 + [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
 + [Moment.js](https://momentjs.com/)
 + [Mongoose](https://mongoosejs.com/)
++ [Jest](https://jestjs.io/)
++ [Supertest](https://www.npmjs.com/package/supertest)
 
 [npm-url]: https://www.npmjs.com/package/@panfilo/express-template
 [npm-image]: http://img.shields.io/npm/v/@panfilo/express-template.svg
