@@ -10,7 +10,7 @@ const ui = require("./ui");
 const cli = meow(
   `
 	Usage
-	  $ npx use-express-template <FolderName>
+	  $ @panfilo/express-template <FolderName>
 
 	  FolderName can be:
 	    Folder name can be anything without a space

@@ -2,12 +2,25 @@
   "name": "@panfilo/express-template",
   "version": "3.0.2",
   "description": "Template for backend with express typescript",
-  "main": "build/index.js",
+  "bin": {
+    "@panfilo/express-template": "src/cli.js"
+  },
+  "scripts": {
+    "test": "ava"
+  },
+  "author": {
+    "name": "Amaury Aparicio",
+    "email": "amaurysunstar@gmail.com"
+  },
+  "license": "ISC",
   "homepage": "https://github.com/AmauryAparicio/express-template#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/AmauryAparicio/express-template"
   },
+  "files": [
+    "src"
+  ],
   "keywords": [
     "cli-app",
     "cli",
@@ -20,20 +33,6 @@
     "AmauryAparicio",
     "template"
   ],
-  "bin": {
-    "@panfilo/express-template": "src/cli.js"
-  },
-  "files": [
-    "src"
-  ],
-  "scripts": {
-    "test": "ava"
-  },
-  "author": {
-    "name": "Amaury Aparicio",
-    "email": "amaurysunstar@gmail.com"
-  },
-  "license": "ISC",
   "dependencies": {
     "edit-json-file": "^1.6.0",
     "execa": "^5.1.1",
