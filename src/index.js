@@ -16,12 +16,10 @@ module.exports = async input => {
   console.log(`\n${logSymbols.success} Created template`);
   console.log(`Installing dependecies using ${input.pkgManager}...`);
   util.editPackageJson(`${targetPath}/package.json`, input.destinationFolder);
+  execSync(
+    `cd ${targetPath} && git init && git add --all && git commit -m 'First Commit' & cd ..`
+  );
   await util.installNodeModules(input.pkgManager, targetPath);
 
-  execSync(`cd ${input.destinationFolder}`);
-  execSync("git init");
-  execSync("git add --all");
-  execSync("git commit -m 'First Commit'");
-  execSync("cd ..");
   return;
 };
