@@ -1,9 +1,9 @@
 {
-  "name": "@panfilo/express-template",
+  "name": "panfilo-express-template",
   "version": "3.1.0",
   "description": "Template for backend with express typescript",
   "bin": {
-    "@panfilo/express-template": "src/cli.js"
+    "panfilo-express-template": "src/cli.js"
   },
   "scripts": {
     "test": "ava"
