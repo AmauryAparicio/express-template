@@ -1,3 +1,5 @@
+"use strict";
+
 const templates = require("./templateMapping").templateMapping;
 const editJsonFile = require("edit-json-file");
 const exec = require("execa");

@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+"use strict";
+
 const meow = require("meow");
 const generate = require(".");
 const ui = require("./ui");

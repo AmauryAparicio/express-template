@@ -6,7 +6,7 @@
 ## Usage
 
 ```sh
-$ npx use-express-template my-app
+$ npx panfilo-express-template my-app
 $ cd my-app
 $ npm run dev
 ```
