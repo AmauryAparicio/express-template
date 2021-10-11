@@ -18,7 +18,7 @@ module.exports = async input => {
   console.log(`Installing dependecies using ${input.pkgManager}...`);
   util.editPackageJson(`${targetPath}/package.json`, input.destinationFolder);
   await util.installNodeModules(input.pkgManager, targetPath);
-  fs.appendFile(`${targetPath}/.gitignore`, "node_modules", () => {
+  fs.appendFile(`${targetPath}/.gitignore`, "node_modules \n build", () => {
     execSync(
       `cd ${targetPath} && git init && git add --all && git commit -m 'First Commit' & cd ..`
     );
