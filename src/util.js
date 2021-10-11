@@ -1,10 +1,10 @@
 "use strict";
 
-const templates = require("./templateMapping").templateMapping;
-const editJsonFile = require("edit-json-file");
-const exec = require("execa");
+import { templateMapping as templates } from "./templateMapping";
+import editJsonFile from "edit-json-file";
+import exec from "execa";
 
-exports.isValidTemplate = (template, choices) => {
+export function isValidTemplate(template, choices) {
   if (choices.includes(template)) {
     return template;
   } else {
@@ -16,18 +16,18 @@ exports.isValidTemplate = (template, choices) => {
       );
     }
   }
-};
+}
 
-exports.editPackageJson = (path, projectName) => {
+export function editPackageJson(path, projectName) {
   let file = editJsonFile(path, { autosave: true });
   file.set("name", projectName);
   return;
-};
+}
 
-exports.installNodeModules = async (pkgManager, path) => {
+export async function installNodeModules(pkgManager, path) {
   const result = await exec(pkgManager, ["install"], {
     cwd: path,
     stdio: "inherit",
   });
   return result;
-};
+}

@@ -1,43 +1,50 @@
 "use strict";
 
-const fs = require("fs");
-const path = require("path");
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  statSync,
+  readFileSync,
+  writeFileSync,
+} from "fs";
+import { join } from "path";
 
-exports.createProject = projectPath => {
-  if (fs.existsSync(projectPath)) {
+export function createProject(projectPath) {
+  if (existsSync(projectPath)) {
     throw new Error(`Folder ${projectPath} exists. Delete or use another name`);
   }
-  fs.mkdirSync(projectPath);
+  mkdirSync(projectPath);
   return true;
-};
+}
 
-exports.createDirectoryContents = (templatePath, projectName) => {
+export function createDirectoryContents(templatePath, projectName) {
   // list of file/folder that should not be copied
   const SKIP_FILES = ["node_modules", "dist"];
   // read all files/folders (1 level) from template folder
-  const filesToCreate = fs.readdirSync(templatePath);
+  const filesToCreate = readdirSync(templatePath);
   // loop each file/folder
   filesToCreate.forEach(file => {
-    const origFilePath = path.join(templatePath, file);
+    const origFilePath = join(templatePath, file);
     // get stats about the current file
-    const stats = fs.statSync(origFilePath);
+    const stats = statSync(origFilePath);
     // skip files that should not be copied
     if (SKIP_FILES.indexOf(file) > -1) return;
     const CURR_DIR = process.cwd();
     if (stats.isFile()) {
       // read file content and transform it using template engine
-      let contents = fs.readFileSync(origFilePath, "utf8");
+      let contents = readFileSync(origFilePath, "utf8");
       // write file to destination folder
-      const writePath = path.join(CURR_DIR, projectName, file);
-      fs.writeFileSync(writePath, contents, "utf8");
+      const writePath = join(CURR_DIR, projectName, file);
+      writeFileSync(writePath, contents, "utf8");
     } else if (stats.isDirectory()) {
       // create folder in destination folder
-      fs.mkdirSync(path.join(CURR_DIR, projectName, file));
+      mkdirSync(join(CURR_DIR, projectName, file));
       // copy files/folder inside current folder recursively
       this.createDirectoryContents(
-        path.join(templatePath, file),
-        path.join(projectName, file)
+        join(templatePath, file),
+        join(projectName, file)
       );
     }
   });
-};
+}

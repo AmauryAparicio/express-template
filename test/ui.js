@@ -1,7 +1,7 @@
 "use strict";
 
-const ui = require("../src/ui");
-const test = require("ava");
+import ui from "../src/ui";
+import test from "ava";
 
 test("Check if options are returned correctly", async t => {
   const options = {
