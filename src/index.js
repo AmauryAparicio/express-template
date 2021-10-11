@@ -1,5 +1,6 @@
 "use strict";
 
+const { execSync } = require("child_process");
 const path = require("path");
 const util = require("./util");
 const create = require("./create");
@@ -16,5 +17,8 @@ module.exports = async input => {
   console.log(`Installing dependecies using ${input.pkgManager}...`);
   util.editPackageJson(`${targetPath}/package.json`, input.destinationFolder);
   await util.installNodeModules(input.pkgManager, targetPath);
+  execSync("git init");
+  execSync("git add --all");
+  execSync("git commit -m 'First Commit'");
   return;
 };
