@@ -131,6 +131,6 @@ Here are the external libraries that the template use:
 - [Supertest](https://www.npmjs.com/package/supertest)
 - [TypeScript](https://www.typescriptlang.org/)
 
-[npm-url]: https://www.npmjs.com/package/@panfilo/express-template
-[npm-image]: http://img.shields.io/npm/v/@panfilo/express-template.svg
-[downloads-image]: http://img.shields.io/npm/dm/@panfilo/express-template.svg
+[npm-url]: https://www.npmjs.com/package/use-express-template
+[npm-image]: http://img.shields.io/npm/v/use-express-template.svg
+[downloads-image]: http://img.shields.io/npm/dm/use-express-template.svg
