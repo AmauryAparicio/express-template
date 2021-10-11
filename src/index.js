@@ -1,20 +1,18 @@
-"use strict";
-
-const { join } = require("path");
-const { editPackageJson, installNodeModules } = require("./util");
-const { createProject, createDirectoryContents } = require("./create");
-const { success } = require("log-symbols");
+const path = require("path");
+const util = require("./util");
+const create = require("./create");
+const logSymbols = require("log-symbols");
 
 module.exports = async input => {
   const CURR_DIR = process.cwd();
-  const templatePath = join(__dirname, "templates", input.template);
-  const targetPath = join(CURR_DIR, input.destinationFolder);
-  if (createProject(targetPath)) {
-    createDirectoryContents(templatePath, input.destinationFolder);
+  const templatePath = path.join(__dirname, "templates", input.template);
+  const targetPath = path.join(CURR_DIR, input.destinationFolder);
+  if (create.createProject(targetPath)) {
+    create.createDirectoryContents(templatePath, input.destinationFolder);
   }
-  console.log(`\n${success} Created template`);
+  console.log(`\n${logSymbols.success} Created template`);
   console.log(`Installing dependecies using ${input.pkgManager}...`);
-  editPackageJson(`${targetPath}/package.json`, input.destinationFolder);
-  await installNodeModules(input.pkgManager, targetPath);
+  util.editPackageJson(`${targetPath}/package.json`, input.destinationFolder);
+  await util.installNodeModules(input.pkgManager, targetPath);
   return;
 };

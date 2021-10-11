@@ -1,16 +1,14 @@
-"use strict";
-
-const { readdirSync } = require("fs");
-const { join } = require("path");
-const { prompt } = require("inquirer");
-const { isValidTemplate } = require("./util");
+const fs = require("fs");
+const path = require("path");
+const inquirer = require("inquirer");
+const util = require("./util");
 
 module.exports = async (options, destinationFolder) => {
   const pkgManager = options.yarn ? "yarn" : "npm";
   let template = options.default ? "TypeScript" : null;
   template = options.template ? options.template : template;
-  const choices = readdirSync(join(__dirname, "templates"));
-  template = template ? isValidTemplate(template, choices) : null;
+  const choices = fs.readdirSync(path.join(__dirname, "templates"));
+  template = template ? util.isValidTemplate(template, choices) : null;
   if (destinationFolder && template) {
     return {
       ...options,
@@ -37,7 +35,7 @@ module.exports = async (options, destinationFolder) => {
     });
   }
 
-  const answers = await prompt(prompts);
+  const answers = await inquirer.prompt(prompts);
 
   return {
     ...options,
