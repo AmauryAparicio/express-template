@@ -20,9 +20,7 @@
     "AmauryAparicio",
     "template"
   ],
-  "bin": {
-    "use-express-template": "src/cli.js"
-  },
+  "bin": "src/cli.js",
   "files": [
     "src"
   ],
