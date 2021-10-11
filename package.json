@@ -1,6 +1,6 @@
 {
   "name": "use-express-template",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Template for backend with express typescript",
   "bin": {
     "use-express-template": "src/cli.js"
