@@ -1,6 +1,6 @@
 {
   "name": "@panfilo/express-template",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Template for backend with express typescript",
   "main": "build/index.js",
   "homepage": "https://github.com/AmauryAparicio/express-template#readme",
