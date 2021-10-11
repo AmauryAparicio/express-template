@@ -6,7 +6,7 @@
 ## Usage
 
 ```sh
-$ npx panfilo-express-template my-app
+$ npx use-express-template my-app
 $ cd my-app
 $ npm run dev
 ```
@@ -32,7 +32,7 @@ $ npm run dev
 $ npx use-express-template --help 
 
     Usage
-   $ create-express-template <FolderName>
+   $ use-express-template <FolderName>
 
    FolderName can be:
      Folder name can be anything without a space
