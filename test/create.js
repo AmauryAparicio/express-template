@@ -1,8 +1,8 @@
 "use strict";
 
-import { createProject, createDirectoryContents } from "../src/create";
-import test, { after } from "ava";
-import { rmdirSync } from "fs";
+const { createProject, createDirectoryContents } = require("../src/create");
+const test = require("ava");
+const { rmdirSync } = require("fs");
 
 test("Check if folder is created", t => {
   createProject("testDir1");
@@ -18,7 +18,7 @@ test("Check if copying works", t => {
   });
 });
 
-after(() => {
+test.after(() => {
   rmdirSync("testDir1");
   rmdirSync("testDir2");
 });

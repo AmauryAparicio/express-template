@@ -1,11 +1,11 @@
 "use strict";
 
-import {
+const {
   isValidTemplate,
   editPackageJson,
   installNodeModules,
-} from "../src/util";
-import test from "ava";
+} = require("../src/util");
+const test = require("ava");
 
 test("Check if valid template is returned if available in choices", t => {
   let template = isValidTemplate("test1", ["test1", "test2"]);

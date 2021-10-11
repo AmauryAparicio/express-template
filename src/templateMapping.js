@@ -1,6 +1,6 @@
 "use strict";
 
-export const templateMapping = {
+exports.templateMapping = {
   js: "JavaScript",
   ts: "TypeScript",
 };

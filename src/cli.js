@@ -1,10 +1,8 @@
 #!/usr/bin/env node
-"use strict";
-
-import meow from "meow";
-import generate from ".";
-import ui from "./ui";
-import { success, error as _error } from "log-symbols";
+const meow = require("meow");
+const generate = require(".");
+const ui = require("./ui");
+const logSymbols = require("log-symbols");
 
 const cli = meow(
   `
@@ -61,8 +59,10 @@ const cli = meow(
   console.log(); // Prints a newline for readability
   // eslint-disable-next-line no-unused-vars
   const created = await generate(options);
-  console.log(`\n${success} Template created and dependencies installed`);
+  console.log(
+    `\n${logSymbols.success} Template created and dependencies installed`
+  );
 })().catch(error => {
-  console.error(`\n${_error} ${error.message}`);
+  console.error(`\n${logSymbols.error} ${error.message}`);
   process.exit(1);
 });
