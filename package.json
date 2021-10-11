@@ -48,5 +48,6 @@
       "test/*"
     ],
     "timeout": "1m"
-  }
+  },
+  "type": "module"
 }
