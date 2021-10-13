@@ -6,9 +6,9 @@
 ## Usage
 
 ```sh
-$ npx use-express-template my-app
-$ cd my-app
-$ npm run dev
+npx use-express-template my-app
+cd my-app
+npm run dev
 ```
 
 ---
@@ -65,10 +65,14 @@ The available templates(you can use the full names or the initials) are listed [
 | :---                          |    :----:   | :---
 | JavaScript                    | js          | Plain JavaScript Template
 | TypeScript                    | ts          | Plain TypeScript Template
+| JavaScript Lite               | tsl         | Plain TypeScript Template with less dependencies
+| TypeScript Lite               | tsl         | Plain TypeScript Template with less dependencies
 
 **Note : The `template` option can take any of these template values or their initials.**
 
 All the values for the database port and name and other settings are stored in the `.env` file which you can change to whatever value which you want to use.
+
+Lite versions do not have Documentation with Swagger nor File parser with cloudinary*
 
 ## Main folders
 
@@ -83,14 +87,17 @@ All the values for the database port and name and other settings are stored in t
 
 We use [dotenv](https://www.npmjs.com/package/dotenv) to manage our environment variables. Please note that all the ports and database names can be changed in the `.env` file to the value you want to use.
 
-- Configure your MongoDB with these variables:
+- Configure your project with these variables:
   - PORT: The port you will use for your project, this is optional, by default will run in port 3000.
   - PRODUCTION_DB: Your MongoDB database url for production
   - DEV_DB: Your MongoDB database url for development
   - TEST_DB: Your MongoDB database url for testing
   - SECRET_JWT_SEED: Your secret seed for JWT
+  - CLOUD_NAME: Your cloudinary cloud name __Not in Lite version__
+  - CLOUD_KEY: Your cloudinary public key __Not in Lite version__
+  - CLOUD_SECRET: Your cloudinary secret key __Not in Lite version__
 
-*Note: If you dont configure an url for production and you deploy your project to production, you will have an error; same for other database urls here.*
+**Note: If you dont configure an url for production and you deploy your project to production, you will have an error; same for other database urls here.**
 
 ---
 
@@ -120,15 +127,24 @@ We use [dotenv](https://www.npmjs.com/package/dotenv) to manage our environment 
 Here are the external libraries that the template use:
 
 - [bcrypt.js](https://www.npmjs.com/package/bcryptjs)
+- [cloudinary](https://cloudinary.com/)
 - [cors](https://www.npmjs.com/package/cors)
+- [cross-env](https://www.npmjs.com/package/cross-env)
 - [dotenv](https://www.npmjs.com/package/dotenv)
-- [express](https://expressjs.com/es/)
 - [express-validator](https://express-validator.github.io/docs/)
+- [express](https://expressjs.com/es/)
+- [Jest](https://jestjs.io/)
 - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
 - [Moment.js](https://momentjs.com/)
 - [Mongoose](https://mongoosejs.com/)
-- [Jest](https://jestjs.io/)
+- [multer-storage-cloudinary](https://www.npmjs.com/package/multer-storage-cloudinary)
+- [multer](https://www.npmjs.com/package/multer)
+- [nodemon](https://www.npmjs.com/package/nodemon)
 - [Supertest](https://www.npmjs.com/package/supertest)
+- [swagger-jsdoc](https://www.npmjs.com/package/swagger-jsdoc)
+- [swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)
+- [ts-jest](https://www.npmjs.com/package/ts-jest)
+- [ts-node](https://typestrong.org/ts-node/)
 - [TypeScript](https://www.typescriptlang.org/)
 
 [npm-url]: https://www.npmjs.com/package/use-express-template
